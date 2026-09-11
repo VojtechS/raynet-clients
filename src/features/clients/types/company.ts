@@ -24,8 +24,8 @@ export interface CompanyListParams {
   taxNumber2?: string;
   owner?: number;
   rating?: string;
-  role?: string;
-  state?: string;
+  role?: CompanyRole;
+  state?: CompanyState;
   category?: number;
   economyActivity?: number;
   companyClassification1?: number;
@@ -64,8 +64,8 @@ export interface CompanyListItem {
   lastName: string | null;
   titleAfter: string | null;
   person: boolean;
-  role: string;
-  state: string;
+  role: CompanyRole;
+  state: CompanyState;
   rating: string;
   owner: CompanyOwner;
   regNumber: string | null;
@@ -112,8 +112,8 @@ export interface CompanyDetail {
   salutation: string | null;
   owner: CompanyOwner;
   rating: string;
-  state: string;
-  role: string;
+  state: CompanyState;
+  role: CompanyRole;
   notice: string | null;
   category: CompanyLookupValue | null;
   contactSource: CompanyLookupValue | null;
@@ -247,3 +247,7 @@ export interface CompanyOriginLead {
   code: string;
   topic: string;
 }
+
+export type CompanyState = 'A_POTENTIAL' | 'B_ACTUAL' | 'C_DEFERRED' | 'D_UNATTRACTIVE';
+
+export type CompanyRole = 'A_SUBSCRIBER' | 'B_PARTNER' | 'C_SUPPLIER' | 'D_RIVAL' | 'E_OWN';

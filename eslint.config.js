@@ -9,7 +9,7 @@ import sonarjs from 'eslint-plugin-sonarjs'
 import prettier from 'eslint-config-prettier'
 
 export default tseslint.config(
-  { ignores: ['dist'] },
+  { ignores: ['dist', 'src/shared/api/generated.ts'] },
   js.configs.recommended,
   sonarjs.configs.recommended,
   {

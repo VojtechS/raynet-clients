@@ -1,5 +1,9 @@
 import type { ClientTableItem } from '../../types/clientTable.ts';
 import { checkValue } from '../../../../shared/utils/checkValue.ts';
+import {
+  getCompanyRoleLabel,
+  getCompanyStateLabel,
+} from '../../constants/companyLabels.ts';
 
 export interface ClientListRowProps {
   client: ClientTableItem;
@@ -7,8 +11,8 @@ export interface ClientListRowProps {
 
 export function ClientListRow({ client }: Readonly<ClientListRowProps>) {
   const name = checkValue(client.name);
-  const state = checkValue(client.state);
-  const role = checkValue(client.role);
+  const state = getCompanyStateLabel(client.state);
+  const role = getCompanyRoleLabel(client.role);
   const rating = checkValue(client.rating);
   const owner = checkValue(client.owner?.fullName);
   const regNumber = checkValue(client.regNumber);
