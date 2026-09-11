@@ -5,7 +5,7 @@ export function ClientsPage() {
   return (
     <main>
       <h1>Clients</h1>
-      <ClientSearchBar />
+      <ClientSearchBar value='' onChange={() => {}} />
       <ClientList />
     </main>
   )
