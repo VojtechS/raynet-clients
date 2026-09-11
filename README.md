@@ -1,5 +1,15 @@
 # React + TypeScript + Vite
 
+## Environment setup
+
+Create a local environment file from the example and add your API token:
+
+```powershell
+Copy-Item .env.example .env
+```
+
+Then edit `.env` and replace the placeholder token. The `.env` file is ignored by Git; do not commit real tokens.
+
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
 Currently, two official plugins are available:
