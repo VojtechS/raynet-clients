@@ -4,6 +4,12 @@ export interface CompanyListResponse {
   data: CompanyListItem[];
 }
 
+export interface CompanyCategoryResponse {
+  success: string;
+  totalCount: number;
+  data: CompanyCategory[];
+}
+
 export interface CompanyListParams {
   offset?: number;
   limit?: number;
@@ -166,6 +172,12 @@ export interface CompanyOwner {
 export interface CompanyLookupValue {
   id: number;
   value: string;
+}
+
+export interface CompanyCategory {
+  id: number;
+  code01: string;
+  code02: string | null;
 }
 
 export interface CompanyContactAddress {

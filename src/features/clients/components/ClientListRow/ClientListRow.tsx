@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import type { CompanyCategory } from '../../api/companyApi.types.ts';
 import type { ClientListItem } from '../../model/client.types.ts';
 import { checkValue } from '../../../../shared/utils/checkValue.ts';
 import { getClientRoleLabel, getClientStateLabel } from '../../constants/clientLabels.ts';
@@ -7,10 +8,11 @@ import styles from './ClientListRow.module.scss';
 
 export interface ClientListRowProps {
   client: ClientListItem;
+  categories: CompanyCategory[];
   isSelected: boolean;
 }
 
-export function ClientListRow({ client, isSelected }: Readonly<ClientListRowProps>) {
+export function ClientListRow({ client, categories, isSelected }: Readonly<ClientListRowProps>) {
   const name = checkValue(client.name);
   const state = getClientStateLabel(client.state);
   const role = getClientRoleLabel(client.role);
@@ -19,6 +21,7 @@ export function ClientListRow({ client, isSelected }: Readonly<ClientListRowProp
   const regNumber = checkValue(client.regNumber);
   const city = checkValue(client.primaryAddress?.address?.city);
   const category = checkValue(client.category?.value);
+  const categoryColor = categories.find((item) => item.id === client.category?.id)?.code02;
 
   return (
     <tr className={styles.clientListRow}>
@@ -38,7 +41,7 @@ export function ClientListRow({ client, isSelected }: Readonly<ClientListRowProp
       <td>{regNumber}</td>
       <td>{city}</td>
       <td>
-        <Badge>{category}</Badge>
+        <Badge color={categoryColor}>{category}</Badge>
       </td>
     </tr>
   );

@@ -5,6 +5,14 @@ import type { CompanyListParams } from '../api/companyApi.types.ts';
 const CLIENTS_QUERY_KEY = ['clients'] as const;
 const CLIENT_QUERY_KEY = (id: number) => [...CLIENTS_QUERY_KEY, id] as const;
 const CLIENT_IMAGE_QUERY_KEY = (fileId: number) => [...CLIENTS_QUERY_KEY, 'image', fileId] as const;
+const CLIENT_CATEGORIES_QUERY_KEY = [...CLIENTS_QUERY_KEY, 'categories'] as const;
+
+export function useClientCategoriesQuery() {
+  return useQuery({
+    queryKey: CLIENT_CATEGORIES_QUERY_KEY,
+    queryFn: () => companyApi.getCategories(),
+  });
+}
 
 export function useClientsQuery(params?: CompanyListParams) {
   return useQuery({

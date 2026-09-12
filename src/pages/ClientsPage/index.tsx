@@ -3,9 +3,16 @@ import { useDebouncedCallback } from 'use-debounce';
 import { useSearchParams } from 'react-router-dom';
 import { ClientList } from '../../features/clients/components/ClientList/ClientList';
 import { ClientSearchBar } from '../../features/clients/components/ClientSearchBar/ClientSearchBar.tsx';
-import { useClientQuery, useClientsQuery } from '../../features/clients/hooks/useClientQueries.ts';
+import {
+  useClientCategoriesQuery,
+  useClientQuery,
+  useClientsQuery,
+} from '../../features/clients/hooks/useClientQueries.ts';
 import { ClientDetailPanel } from '../../features/clients/components/ClientDetailPanel/ClientDetailPanel.tsx';
-import { MIN_SEARCH_LENGTH, SEARCH_DEBOUNCE_MS } from '../../features/clients/constants/clientSearch.ts';
+import {
+  MIN_SEARCH_LENGTH,
+  SEARCH_DEBOUNCE_MS,
+} from '../../features/clients/constants/clientSearch.ts';
 import { parseClientId } from '../../features/clients/utils/parseClientId.ts';
 
 export function ClientsPage() {
@@ -26,6 +33,8 @@ export function ClientsPage() {
 
   const clientsQuery = useClientsQuery(querySearch ? { fulltext: querySearch } : undefined);
   const clientQuery = useClientQuery(selectedClientId ?? 0, selectedClientId !== null);
+  const categoriesQuery = useClientCategoriesQuery();
+  const categories = categoriesQuery.data?.data ?? [];
 
   function handleSearchChange(value: string) {
     setSearch(value);
@@ -61,11 +70,10 @@ export function ClientsPage() {
       />
       <ClientList
         clients={clientsQuery.data?.data ?? []}
+        categories={categories}
         selectedClientId={selectedClientId}
       />
-      <ClientDetailPanel
-        client={clientQuery.data?.data}
-      />
+      <ClientDetailPanel client={clientQuery.data?.data} categories={categories} />
     </main>
   );
 }
