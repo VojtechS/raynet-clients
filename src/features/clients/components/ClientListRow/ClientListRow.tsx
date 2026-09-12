@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import type { ClientTableItem } from '../../types/clientTable.ts';
 import { checkValue } from '../../../../shared/utils/checkValue.ts';
 import { getCompanyRoleLabel, getCompanyStateLabel } from '../../constants/companyLabels.ts';
@@ -5,10 +6,9 @@ import { getCompanyRoleLabel, getCompanyStateLabel } from '../../constants/compa
 export interface ClientListRowProps {
   client: ClientTableItem;
   isSelected: boolean;
-  onSelect: (clientId: number) => void;
 }
 
-export function ClientListRow({ client, isSelected, onSelect }: Readonly<ClientListRowProps>) {
+export function ClientListRow({ client, isSelected }: Readonly<ClientListRowProps>) {
   const name = checkValue(client.name);
   const state = getCompanyStateLabel(client.state);
   const role = getCompanyRoleLabel(client.role);
@@ -21,16 +21,12 @@ export function ClientListRow({ client, isSelected, onSelect }: Readonly<ClientL
   return (
     <tr>
       <th scope="row">
-        <a
-          href={`#client-${client.id}`}
+        <Link
+          to={{ search: `?clientId=${client.id}` }}
           aria-current={isSelected ? 'page' : undefined}
-          onClick={(event) => {
-            event.preventDefault();
-            onSelect(client.id);
-          }}
         >
           {name}
-        </a>
+        </Link>
       </th>
       <td>{state}</td>
       <td>{role}</td>

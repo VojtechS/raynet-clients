@@ -1,15 +1,19 @@
 import { useState } from 'react';
 import { useDebouncedCallback } from 'use-debounce';
+import { useSearchParams } from 'react-router-dom';
 import { ClientList } from '../../features/clients/components/ClientList/ClientList';
 import { ClientSearchBar } from '../../features/clients/components/ClientSearchBar/ClientSearchBar.tsx';
 import { useClient, useClients } from '../../features/clients/hooks/useClients.ts';
 import { ClientDetailPanel } from '../../features/clients/components/ClientDetailPanel/ClientDetailPanel.tsx';
 import { MIN_SEARCH_LENGTH, SEARCH_DEBOUNCE_MS } from '../../features/clients/constants/search.ts';
+import { parseClientId } from '../../features/clients/utils/parseClientId.ts';
 
 export function ClientsPage() {
   const [search, setSearch] = useState('');
   const [querySearch, setQuerySearch] = useState('');
-  const [selectedClientId, setSelectedClientId] = useState<number | null>(null);
+
+  const [searchParams] = useSearchParams();
+  const selectedClientId = parseClientId(searchParams.get('clientId'));
 
   const normalizeForQuery = (val: string) => {
     const trimmed = val.trim();
@@ -58,7 +62,6 @@ export function ClientsPage() {
       <ClientList
         clients={clientsQuery.data?.data ?? []}
         selectedClientId={selectedClientId}
-        onClientSelect={setSelectedClientId}
       />
       <ClientDetailPanel
         client={clientQuery.data?.data}

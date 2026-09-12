@@ -7,6 +7,10 @@ export interface ClientDetailPanelProps {
 }
 
 export function ClientDetailPanel({ client }: Readonly<ClientDetailPanelProps>) {
+  if (!client) {
+    return null;
+  }
+
   const addressText = formatAddress(client.primaryAddress);
 
   return (
