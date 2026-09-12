@@ -2,6 +2,7 @@ import { ClientListHeader } from '../ClientListHeader/ClientListHeader.tsx';
 import { ClientListRow } from '../ClientListRow/ClientListRow.tsx';
 import type { CompanyCategory } from '../../api/companyApi.types.ts';
 import type { ClientListItem } from '../../model/client.types.ts';
+import tableSizeStyles from '../../../../styles/clientListTableSizes.module.scss';
 import styles from './ClientList.module.scss';
 
 export interface ClientListProps {
@@ -12,8 +13,8 @@ export interface ClientListProps {
 
 export function ClientList({ clients, categories, selectedClientId }: Readonly<ClientListProps>) {
   return (
-    <div>
-      <table className={styles.clientList}>
+    <div className={styles.clientListWrapper}>
+      <table className={`${styles.clientList} ${tableSizeStyles.clientList}`}>
         <ClientListHeader />
         <tbody>
           {clients.map((client) => (

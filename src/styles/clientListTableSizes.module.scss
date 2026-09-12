@@ -1,0 +1,39 @@
+.clientList {
+  // Keep the list usable at narrow viewport sizes while preserving the
+  // proportions of the source table when the available space is larger.
+  min-width: 1045px;
+
+  th,
+  td {
+    box-sizing: border-box;
+  }
+
+  &__name {
+    min-width: 270px;
+  }
+
+  &__state,
+  &__relation {
+    min-width: 100px;
+  }
+
+  &__rating {
+    min-width: 90px;
+  }
+
+  &__owner {
+    min-width: 150px;
+  }
+
+  &__regNumber {
+    min-width: 120px;
+  }
+
+  &__city {
+    min-width: 110px;
+  }
+
+  &__category {
+    min-width: 105px;
+  }
+}
