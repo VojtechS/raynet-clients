@@ -26,6 +26,24 @@
     }
   }
 
+  &__state {
+    &--uninteresting {
+      color: $color-danger;
+    }
+
+    &--deferred {
+      color: $color-grey;
+    }
+
+    &--potential {
+      color: $color-warning;
+    }
+
+    &--actual {
+      color: $color-success;
+    }
+  }
+
   &:hover > th,
   &:hover > td {
     background-color: $color-blue-light;

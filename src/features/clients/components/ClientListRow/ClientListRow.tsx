@@ -1,10 +1,17 @@
 import { Link } from 'react-router-dom';
-import type { CompanyCategory } from '../../api/companyApi.types.ts';
+import type { CompanyCategory, CompanyState } from '../../api/companyApi.types.ts';
 import type { ClientListItem } from '../../model/client.types.ts';
 import { checkValue } from '../../../../shared/utils/checkValue.ts';
 import { getClientRoleLabel, getClientStateLabel } from '../../constants/clientLabels.ts';
 import { Badge } from '../../../../shared/components/Badge/Badge.tsx';
 import styles from './ClientListRow.module.scss';
+
+const stateClasses: Record<CompanyState, string> = {
+  A_POTENTIAL: styles['clientListRow__state--potential'],
+  B_ACTUAL: styles['clientListRow__state--actual'],
+  C_DEFERRED: styles['clientListRow__state--deferred'],
+  D_UNATTRACTIVE: styles['clientListRow__state--uninteresting'],
+};
 
 export interface ClientListRowProps {
   client: ClientListItem;
@@ -34,7 +41,9 @@ export function ClientListRow({ client, categories, isSelected }: Readonly<Clien
           {name}
         </Link>
       </th>
-      <td>{state}</td>
+      <td>
+        <span className={stateClasses[client.state]}>{state}</span>
+      </td>
       <td>{role}</td>
       <td>{rating}</td>
       <td>{owner}</td>

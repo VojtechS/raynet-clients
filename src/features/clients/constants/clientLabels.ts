@@ -5,10 +5,10 @@ import type {
 import { checkValue } from '../../../shared/utils/checkValue.ts';
 
 const stateLabels: Record<CompanyState, string> = {
-  A_POTENTIAL: 'Potenciální',
-  B_ACTUAL: 'Aktivní',
+  A_POTENTIAL: 'Potencionální',
+  B_ACTUAL: 'Aktuální',
   C_DEFERRED: 'Odložený',
-  D_UNATTRACTIVE: 'Neatraktivní',
+  D_UNATTRACTIVE: 'Nezajímavý',
 };
 
 const roleLabels: Record<CompanyRole, string> = {
@@ -16,7 +16,7 @@ const roleLabels: Record<CompanyRole, string> = {
   B_PARTNER: 'Partner',
   C_SUPPLIER: 'Dodavatel',
   D_RIVAL: 'Konkurent',
-  E_OWN: 'Vlastní',
+  E_OWN: 'Vlastní firma',
 };
 
 function isCompanyState(value: string): value is CompanyState {
