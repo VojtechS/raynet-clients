@@ -52,7 +52,7 @@ export function ClientsPage() {
 
   return (
     <main>
-      <h1>Klienti</h1>
+      <h1 className="page-title">Klienti</h1>
       <ClientSearchBar
         value={search}
         onChange={handleSearchChange}
