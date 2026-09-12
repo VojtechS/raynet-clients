@@ -3,7 +3,7 @@ import { checkValue } from '../../../../shared/utils/checkValue.ts';
 import { formatAddress } from '../../utils/formatAddress.ts';
 
 export interface ClientDetailPanelProps {
-  client: ClientDetailPanelData;
+  client?: ClientDetailPanelData;
 }
 
 export function ClientDetailPanel({ client }: Readonly<ClientDetailPanelProps>) {
@@ -31,9 +31,16 @@ export function ClientDetailPanel({ client }: Readonly<ClientDetailPanelProps>) 
         <div>
           <p>{checkValue(client.regNumber)}</p>
           <address>{addressText}</address>
-          <a href="" target="_blank" rel="noopener noreferrer" aria-label="Zobrazit na mapě">
-            Zobrazit na mapě
-          </a>
+          {addressText !== '-' ? (
+            <a
+              href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(addressText)}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Zobrazit na mapě"
+            >
+              Zobrazit na mapě
+            </a>
+          ) : null}
         </div>
       </div>
 
