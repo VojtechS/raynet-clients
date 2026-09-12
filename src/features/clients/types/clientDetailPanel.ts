@@ -5,6 +5,7 @@ export type ClientDetailPanelData = Pick<
   | 'id'
   | 'name'
   | 'state'
+  | 'role'
   | 'category'
   | 'logo'
   | 'regNumber'
