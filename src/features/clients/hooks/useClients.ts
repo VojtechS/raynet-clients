@@ -4,6 +4,7 @@ import type { CompanyListParams } from '../types/company.ts';
 
 const CLIENTS_QUERY_KEY = ['clients'] as const;
 const CLIENT_QUERY_KEY = (id: number) => [...CLIENTS_QUERY_KEY, id] as const;
+const CLIENT_IMAGE_QUERY_KEY = (fileId: number) => [...CLIENTS_QUERY_KEY, 'image', fileId] as const;
 
 export function useClients(params?: CompanyListParams) {
   return useQuery({
@@ -17,6 +18,14 @@ export function useClient(id: number, enabled: boolean = true) {
     queryKey: CLIENT_QUERY_KEY(id),
     queryFn: () => clientsApi.getById(id),
     enabled: enabled && !!id,
+  });
+}
+
+export function useClientImage(fileId?: number) {
+  return useQuery({
+    queryKey: CLIENT_IMAGE_QUERY_KEY(fileId ?? 0),
+    queryFn: ({ signal }) => clientsApi.getImage(fileId ?? 0, signal),
+    enabled: fileId !== undefined,
   });
 }
 

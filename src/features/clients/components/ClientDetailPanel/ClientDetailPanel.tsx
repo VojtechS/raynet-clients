@@ -1,3 +1,4 @@
+import { ClientLogo } from '../ClientLogo/ClientLogo.tsx';
 import type { ClientDetailPanelData } from '../../types/clientDetailPanel.ts';
 import { checkValue } from '../../../../shared/utils/checkValue.ts';
 import { formatAddress } from '../../utils/formatAddress.ts';
@@ -24,16 +25,10 @@ export function ClientDetailPanel({ client }: Readonly<ClientDetailPanelProps>) 
       </header>
 
       <div>
-        <div>
-          {client.logo?.fileName ? (
-            <img src={client.logo.fileName} alt={`${client.name} logo`} />
-          ) : (
-            <span aria-hidden="true">-</span>
-          )}
-        </div>
+        <ClientLogo logoId={client.logo?.id} clientName={client.name} />
 
         <div>
-          <p>{checkValue(client.regNumber)}</p>
+          <p>IČ: {checkValue(client.regNumber)}</p>
           <address>{addressText}</address>
           {addressText !== '-' ? (
             <a
