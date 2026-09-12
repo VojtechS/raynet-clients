@@ -3,9 +3,9 @@ import { useDebouncedCallback } from 'use-debounce';
 import { useSearchParams } from 'react-router-dom';
 import { ClientList } from '../../features/clients/components/ClientList/ClientList';
 import { ClientSearchBar } from '../../features/clients/components/ClientSearchBar/ClientSearchBar.tsx';
-import { useClient, useClients } from '../../features/clients/hooks/useClients.ts';
+import { useClientQuery, useClientsQuery } from '../../features/clients/hooks/useClientQueries.ts';
 import { ClientDetailPanel } from '../../features/clients/components/ClientDetailPanel/ClientDetailPanel.tsx';
-import { MIN_SEARCH_LENGTH, SEARCH_DEBOUNCE_MS } from '../../features/clients/constants/search.ts';
+import { MIN_SEARCH_LENGTH, SEARCH_DEBOUNCE_MS } from '../../features/clients/constants/clientSearch.ts';
 import { parseClientId } from '../../features/clients/utils/parseClientId.ts';
 
 export function ClientsPage() {
@@ -24,8 +24,8 @@ export function ClientsPage() {
     setQuerySearch(normalizeForQuery(val));
   }, SEARCH_DEBOUNCE_MS);
 
-  const clientsQuery = useClients(querySearch ? { fulltext: querySearch } : undefined);
-  const clientQuery = useClient(selectedClientId ?? 0, selectedClientId !== null);
+  const clientsQuery = useClientsQuery(querySearch ? { fulltext: querySearch } : undefined);
+  const clientQuery = useClientQuery(selectedClientId ?? 0, selectedClientId !== null);
 
   function handleSearchChange(value: string) {
     setSearch(value);

@@ -1,5 +1,5 @@
 import { type SyntheticEvent, useId, useRef } from 'react';
-import { MIN_SEARCH_LENGTH } from '../../constants/search.ts';
+import { MIN_SEARCH_LENGTH } from '../../constants/clientSearch.ts';
 
 export interface ClientSearchBarProps {
   value: string;

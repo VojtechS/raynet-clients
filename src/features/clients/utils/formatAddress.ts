@@ -1,4 +1,4 @@
-import type { CompanyContactAddress } from '../types/company.ts';
+import type { CompanyContactAddress } from '../api/companyApi.types.ts';
 
 export function formatAddress(contactAddress: CompanyContactAddress | null): string {
   const address = contactAddress?.address;

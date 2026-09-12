@@ -1,4 +1,4 @@
-import type { CompanyContactAddress } from '../../types/company.ts';
+import type { CompanyContactAddress } from '../../api/companyApi.types.ts';
 
 export interface ClientAddressProps {
   contactAddress: CompanyContactAddress | null;

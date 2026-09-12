@@ -1,7 +1,7 @@
 import type {
   CompanyRole,
   CompanyState,
-} from '../types/company.ts';
+} from '../api/companyApi.types.ts';
 import { checkValue } from '../../../shared/utils/checkValue.ts';
 
 const stateLabels: Record<CompanyState, string> = {
@@ -27,13 +27,13 @@ function isCompanyRole(value: string): value is CompanyRole {
   return value in roleLabels;
 }
 
-export function getCompanyStateLabel(value: string | null | undefined): string {
+export function getClientStateLabel(value: string | null | undefined): string {
   const state = checkValue(value);
 
   return isCompanyState(state) ? stateLabels[state] : state;
 }
 
-export function getCompanyRoleLabel(value: string | null | undefined): string {
+export function getClientRoleLabel(value: string | null | undefined): string {
   const role = checkValue(value);
 
   return isCompanyRole(role) ? roleLabels[role] : role;

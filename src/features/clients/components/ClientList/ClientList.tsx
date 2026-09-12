@@ -1,9 +1,9 @@
 import { ClientListHeader } from '../ClientListHeader/ClientListHeader.tsx';
 import { ClientListRow } from '../ClientListRow/ClientListRow.tsx';
-import type { ClientTableItem } from '../../types/clientTable.ts';
+import type { ClientListItem } from '../../model/client.types.ts';
 
 export interface ClientListProps {
-  clients: ClientTableItem[];
+  clients: ClientListItem[];
   selectedClientId: number | null;
 }
 

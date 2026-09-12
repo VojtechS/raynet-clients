@@ -1,12 +1,12 @@
 import { ClientLogo } from '../ClientLogo/ClientLogo.tsx';
-import type { ClientDetailPanelData } from '../../types/clientDetailPanel.ts';
+import type { ClientDetail } from '../../model/client.types.ts';
 import { checkValue } from '../../../../shared/utils/checkValue.ts';
 import { formatAddress } from '../../utils/formatAddress.ts';
 import { Badge } from '../../../../shared/components/Badge/Badge.tsx';
 import { ClientAddress } from '../ClientAddress/ClientAddress.tsx';
 
 export interface ClientDetailPanelProps {
-  client?: ClientDetailPanelData;
+  client?: ClientDetail;
 }
 
 export function ClientDetailPanel({ client }: Readonly<ClientDetailPanelProps>) {

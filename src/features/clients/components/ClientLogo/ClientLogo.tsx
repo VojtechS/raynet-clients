@@ -1,4 +1,4 @@
-import { useClientImage } from '../../hooks/useClients.ts';
+import { useClientImageQuery } from '../../hooks/useClientQueries.ts';
 
 interface ClientLogoProps {
   logoId?: number;
@@ -6,7 +6,7 @@ interface ClientLogoProps {
 }
 
 export function ClientLogo({ logoId, clientName }: Readonly<ClientLogoProps>) {
-  const imageQuery = useClientImage(logoId);
+  const imageQuery = useClientImageQuery(logoId);
   const imageData = imageQuery.data?.imgData;
   const hasImage = Boolean(imageData);
 

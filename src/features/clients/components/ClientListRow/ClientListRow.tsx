@@ -1,17 +1,18 @@
 import { Link } from 'react-router-dom';
-import type { ClientTableItem } from '../../types/clientTable.ts';
+import type { ClientListItem } from '../../model/client.types.ts';
 import { checkValue } from '../../../../shared/utils/checkValue.ts';
-import { getCompanyRoleLabel, getCompanyStateLabel } from '../../constants/companyLabels.ts';
+import { getClientRoleLabel, getClientStateLabel } from '../../constants/clientLabels.ts';
+import { Badge } from '../../../../shared/components/Badge/Badge.tsx';
 
 export interface ClientListRowProps {
-  client: ClientTableItem;
+  client: ClientListItem;
   isSelected: boolean;
 }
 
 export function ClientListRow({ client, isSelected }: Readonly<ClientListRowProps>) {
   const name = checkValue(client.name);
-  const state = getCompanyStateLabel(client.state);
-  const role = getCompanyRoleLabel(client.role);
+  const state = getClientStateLabel(client.state);
+  const role = getClientRoleLabel(client.role);
   const rating = checkValue(client.rating);
   const owner = checkValue(client.owner?.fullName);
   const regNumber = checkValue(client.regNumber);
@@ -34,7 +35,9 @@ export function ClientListRow({ client, isSelected }: Readonly<ClientListRowProp
       <td>{owner}</td>
       <td>{regNumber}</td>
       <td>{city}</td>
-      <td>{category}</td>
+      <td>
+        <Badge>{category}</Badge>
+      </td>
     </tr>
   );
 }

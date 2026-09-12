@@ -4,9 +4,9 @@ import type {
   CompanyDetailResponse,
   CompanyListParams,
   CompanyListResponse,
-} from '../types/company.ts';
+} from './companyApi.types.ts';
 
-export const clientsApi = {
+export const companyApi = {
   getAll: async (params?: CompanyListParams): Promise<CompanyListResponse> => {
     const response = await api.get<CompanyListResponse>('/company/', { params });
     return response.data;
