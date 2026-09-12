@@ -31,7 +31,11 @@ export function ClientsPage() {
     setQuerySearch(normalizeForQuery(val));
   }, SEARCH_DEBOUNCE_MS);
 
-  const clientsQuery = useClientsQuery(querySearch ? { fulltext: querySearch } : undefined);
+  const clientsQuery = useClientsQuery({
+    ...(querySearch ? { fulltext: querySearch } : {}),
+    sortColumn: 'name',
+    sortDirection: 'ASC',
+  });
   const clientQuery = useClientQuery(selectedClientId ?? 0, selectedClientId !== null);
   const categoriesQuery = useClientCategoriesQuery();
   const categories = categoriesQuery.data?.data ?? [];

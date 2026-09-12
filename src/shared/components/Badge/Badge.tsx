@@ -1,4 +1,5 @@
 import type { ReactNode } from 'react';
+import styles from './Badge.module.scss';
 
 export interface BadgeProps {
   children: ReactNode;
@@ -6,5 +7,9 @@ export interface BadgeProps {
 }
 
 export function Badge({ children, color }: Readonly<BadgeProps>) {
-  return <span style={{ backgroundColor: color ? `#${color}` : undefined }}>{children}</span>;
+  return (
+    <span className={styles.badge} style={{ backgroundColor: color ? `#${color}` : undefined }}>
+      {children}
+    </span>
+  );
 }
