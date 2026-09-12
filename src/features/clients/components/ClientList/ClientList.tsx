@@ -1,6 +1,7 @@
 import { ClientListHeader } from '../ClientListHeader/ClientListHeader.tsx';
 import { ClientListRow } from '../ClientListRow/ClientListRow.tsx';
 import type { ClientListItem } from '../../model/client.types.ts';
+import styles from './ClientList.module.scss';
 
 export interface ClientListProps {
   clients: ClientListItem[];
@@ -10,7 +11,7 @@ export interface ClientListProps {
 export function ClientList({ clients, selectedClientId }: Readonly<ClientListProps>) {
   return (
     <div>
-      <table>
+      <table className={styles.clientList}>
         <ClientListHeader />
         <tbody>
           {clients.map((client) => (

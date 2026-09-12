@@ -1,0 +1,41 @@
+@use '../../../../styles/variables' as *;
+
+.clientListRow {
+  box-shadow: 0 0 4px rgba(0, 0, 0, .05);
+
+  & > th,
+  & > td {
+    font-size: 13px;
+    text-align: left;
+
+    background-color: $color-white;
+    color: $color-grey;
+
+    min-height: 30px;
+    line-height: 30px;
+
+    padding: 0 10px;
+  }
+
+  &__link {
+    color: $color-black;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  &:hover > th,
+  &:hover > td {
+    background-color: $color-blue-light;
+  }
+
+  & > :first-child {
+    border-radius: 4px 0 0 4px;
+  }
+
+  & > :last-child {
+    border-radius: 0 4px 4px 0;
+  }
+}

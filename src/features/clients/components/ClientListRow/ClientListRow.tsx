@@ -3,6 +3,7 @@ import type { ClientListItem } from '../../model/client.types.ts';
 import { checkValue } from '../../../../shared/utils/checkValue.ts';
 import { getClientRoleLabel, getClientStateLabel } from '../../constants/clientLabels.ts';
 import { Badge } from '../../../../shared/components/Badge/Badge.tsx';
+import styles from './ClientListRow.module.scss';
 
 export interface ClientListRowProps {
   client: ClientListItem;
@@ -20,9 +21,10 @@ export function ClientListRow({ client, isSelected }: Readonly<ClientListRowProp
   const category = checkValue(client.category?.value);
 
   return (
-    <tr>
+    <tr className={styles.clientListRow}>
       <th scope="row">
         <Link
+          className={styles['clientListRow__link']}
           to={{ search: `?clientId=${client.id}` }}
           aria-current={isSelected ? 'page' : undefined}
         >

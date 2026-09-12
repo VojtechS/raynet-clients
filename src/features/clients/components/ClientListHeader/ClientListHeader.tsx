@@ -1,8 +1,10 @@
+import styles from './ClientListHeader.module.scss';
+
 export function ClientListHeader() {
   return (
-    <thead>
+    <thead className={styles.clientListHeader}>
       <tr>
-        <th scope="col">Název / Jméno</th>
+        <th scope="col">Název/Jméno</th>
         <th scope="col">Stav</th>
         <th scope="col">Vztah</th>
         <th scope="col">Rating</th>
