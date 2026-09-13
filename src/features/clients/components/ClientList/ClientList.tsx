@@ -23,15 +23,23 @@ export function ClientList({
       <table className={`${styles.clientList} ${tableSizeStyles.clientList}`}>
         <ClientListHeader />
         <tbody>
-          {clients.map((client) => (
-            <ClientListRow
-              key={client.id}
-              client={client}
-              categories={categories}
-              isSelected={client.id === selectedClientId}
-              onSelect={onSelect}
-            />
-          ))}
+          {clients.length === 0 ? (
+            <tr>
+              <td className={styles.clientListEmptyCell} colSpan={8}>
+                <div className={styles.clientListEmptyCellContent}>Žádní klienti</div>
+              </td>
+            </tr>
+          ) : (
+            clients.map((client) => (
+              <ClientListRow
+                key={client.id}
+                client={client}
+                categories={categories}
+                isSelected={client.id === selectedClientId}
+                onSelect={onSelect}
+              />
+            ))
+          )}
         </tbody>
       </table>
     </div>
