@@ -1,7 +1,6 @@
 .clientList {
-  // Keep the list usable at narrow viewport sizes while preserving the
-  // proportions of the source table when the available space is larger.
   min-width: 1045px;
+  width: 100%;
 
   th,
   td {

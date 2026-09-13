@@ -33,7 +33,9 @@
   }
 
   &:hover > th,
-  &:hover > td {
+  &:hover > td,
+  &--selected > th,
+  &--selected > td{
     background-color: $color-blue-light;
   }
 

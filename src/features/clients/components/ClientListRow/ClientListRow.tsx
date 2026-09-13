@@ -31,7 +31,9 @@ export function ClientListRow({
   const categoryColor = categories.find((item) => item.id === client.category?.id)?.code02;
 
   return (
-    <tr className={styles.clientListRow}>
+    <tr
+      className={`${styles.clientListRow} ${isSelected && styles['clientListRow--selected']}`}
+    >
       <th className={tableStyles.clientList__name} scope="row">
         <div className={styles.clientListRow__content}>
           <Link
