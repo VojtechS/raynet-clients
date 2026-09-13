@@ -18,16 +18,17 @@
 
     font-size: 13px;
     text-align: left;
+    font-weight: 500;
 
     color: $color-grey;
   }
 
   &__link {
     color: $color-black;
-    text-decoration: none;
+    font-weight: 600;
 
     &:hover {
-      text-decoration: underline;
+      text-decoration: none;
     }
   }
 
