@@ -64,7 +64,7 @@ export function ClientsPage() {
   }
 
   return (
-    <main>
+    <>
       <h1 className="pageTitle">Klienti</h1>
       <ClientSearchBar
         value={search}
@@ -78,6 +78,6 @@ export function ClientsPage() {
         selectedClientId={selectedClientId}
       />
       <ClientDetailPanel client={clientQuery.data?.data} categories={categories} />
-    </main>
+    </>
   );
 }

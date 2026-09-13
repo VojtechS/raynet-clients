@@ -1,5 +1,7 @@
 import { type SyntheticEvent, useId, useRef } from 'react';
+import { Search, X } from 'lucide-react';
 import { MIN_SEARCH_LENGTH } from '../../constants/clientSearch.ts';
+import styles from './ClientSearchBar.module.scss';
 
 export interface ClientSearchBarProps {
   value: string;
@@ -52,10 +54,21 @@ export function ClientSearchBar({
   }
 
   return (
-    <search>
-      <form onSubmit={handleSubmit}>
-        <label htmlFor={inputId}>{label}</label>
+    <search className={styles.clientSearchBar}>
+      <form className={styles['clientSearchBar__form']} onSubmit={handleSubmit}>
+        <label className="labelVisuallyHidden" htmlFor={inputId}>
+          {label}
+        </label>
+
+        <Search
+          className={styles['clientSearchBar__searchIcon']}
+          aria-hidden="true"
+          size={12}
+          strokeWidth={3}
+        />
+
         <input
+          className={styles['clientSearchBar__input']}
           ref={inputRef}
           id={inputId}
           name={name}
@@ -68,15 +81,26 @@ export function ClientSearchBar({
           aria-describedby={isTooShort ? validationMessageId : undefined}
           autoComplete="off"
         />
+
+        {value.length > 0 && (
+          <button
+            className={styles['clientSearchBar__clearButton']}
+            type="button"
+            aria-label={clearLabel}
+            onClick={handleClear}
+          >
+            <X aria-hidden="true" size={14} strokeWidth={3} />
+          </button>
+        )}
+
         {isTooShort && (
-          <p id={validationMessageId} role="alert">
+          <p
+            className={styles['clientSearchBar__validationMessage']}
+            id={validationMessageId}
+            role="alert"
+          >
             Min. {MIN_SEARCH_LENGTH} znaky
           </p>
-        )}
-        {value.length > 0 && (
-          <button type="button" aria-label={clearLabel} onClick={handleClear}>
-            {clearLabel}
-          </button>
         )}
       </form>
     </search>

@@ -6,9 +6,28 @@ body {
   font-size: 12px;
   color: $color-black;
   background-color: $color-main-bg;
+
+  padding: 40px 30px;
 }
 
 .pageTitle {
   font-size: 28px;
   font-weight: 400;
+
+  margin-bottom: 17px;
+}
+
+.labelVisuallyHidden {
+  position: absolute;
+
+  width: 1px;
+  height: 1px;
+
+  padding: 0;
+  margin: -1px;
+
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }
