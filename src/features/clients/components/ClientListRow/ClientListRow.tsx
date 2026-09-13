@@ -32,12 +32,12 @@ export function ClientListRow({
 
   return (
     <tr
-      className={`${styles.clientListRow} ${isSelected && styles['clientListRow--selected']}`}
+      className={`${styles.clientListRow} ${isSelected && styles.clientListRowSelected}`}
     >
       <th className={tableStyles.clientList__name} scope="row">
         <div className={styles.clientListRow__content}>
           <Link
-            className={styles['clientListRow__link']}
+            className={styles.clientListRow__link}
             to={{ search: `?clientId=${client.id}` }}
             aria-current={isSelected ? 'page' : undefined}
             onClick={onSelect}

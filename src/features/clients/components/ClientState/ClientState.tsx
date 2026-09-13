@@ -4,10 +4,10 @@ import { getClientStateLabel } from '../../constants/clientLabels.ts';
 import styles from './ClientState.module.scss';
 
 const stateClasses: Record<CompanyState, string> = {
-  A_POTENTIAL: styles['clientState--potential'],
-  B_ACTUAL: styles['clientState--actual'],
-  C_DEFERRED: styles['clientState--deferred'],
-  D_UNATTRACTIVE: styles['clientState--uninteresting'],
+  A_POTENTIAL: styles.clientStatePotential,
+  B_ACTUAL: styles.clientStateActual,
+  C_DEFERRED: styles.clientStateDeferred,
+  D_UNATTRACTIVE: styles.clientStateUninteresting,
 };
 
 export interface ClientStateProps {

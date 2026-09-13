@@ -34,8 +34,8 @@
 
   &:hover > th,
   &:hover > td,
-  &--selected > th,
-  &--selected > td{
+  &Selected > th,
+  &Selected > td {
     background-color: $color-blue-light;
   }
 

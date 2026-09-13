@@ -1,19 +1,19 @@
 @use '../../../../styles/variables.scss' as *;
 
 .clientState {
-  &--uninteresting {
+  &Uninteresting {
     color: $color-danger;
   }
 
-  &--deferred {
+  &Deferred {
     color: $color-grey;
   }
 
-  &--potential {
+  &Potential {
     color: $color-warning;
   }
 
-  &--actual {
+  &Actual {
     color: $color-success;
   }
 }

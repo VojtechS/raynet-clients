@@ -55,20 +55,20 @@ export function ClientSearchBar({
 
   return (
     <search className={styles.clientSearchBar}>
-      <form className={styles['clientSearchBar__form']} onSubmit={handleSubmit}>
+      <form className={styles.clientSearchBar__form} onSubmit={handleSubmit}>
         <label className="labelVisuallyHidden" htmlFor={inputId}>
           {label}
         </label>
 
         <Search
-          className={styles['clientSearchBar__searchIcon']}
+          className={styles.clientSearchBar__searchIcon}
           aria-hidden="true"
           size={12}
           strokeWidth={3}
         />
 
         <input
-          className={styles['clientSearchBar__input']}
+          className={styles.clientSearchBar__input}
           ref={inputRef}
           id={inputId}
           name={name}
@@ -84,7 +84,7 @@ export function ClientSearchBar({
 
         {value.length > 0 && (
           <button
-            className={styles['clientSearchBar__clearButton']}
+            className={styles.clientSearchBar__clearButton}
             type="button"
             aria-label={clearLabel}
             onClick={handleClear}
@@ -95,7 +95,7 @@ export function ClientSearchBar({
 
         {isTooShort && (
           <p
-            className={styles['clientSearchBar__validationMessage']}
+            className={styles.clientSearchBar__validationMessage}
             id={validationMessageId}
             role="alert"
           >
