@@ -6,21 +6,4 @@
   background-color: $color-white;
   box-shadow: 0 0 4px rgba(0, 0, 0, .05);
 
-  &__state {
-    &--uninteresting {
-      color: $color-danger;
-    }
-
-    &--deferred {
-      color: $color-grey;
-    }
-
-    &--potential {
-      color: $color-warning;
-    }
-
-    &--actual {
-      color: $color-success;
-    }
-  }
 }

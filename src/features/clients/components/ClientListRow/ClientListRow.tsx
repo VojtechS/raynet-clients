@@ -1,18 +1,12 @@
 import { Link } from 'react-router-dom';
-import type { CompanyCategory, CompanyState } from '../../api/companyApi.types.ts';
+import type { CompanyCategory } from '../../api/companyApi.types.ts';
 import type { ClientListItem } from '../../model/client.types.ts';
 import { checkValue } from '../../../../shared/utils/checkValue.ts';
-import { getClientRoleLabel, getClientStateLabel } from '../../constants/clientLabels.ts';
+import { getClientRoleLabel } from '../../constants/clientLabels.ts';
 import { Badge } from '../../../../shared/components/Badge/Badge.tsx';
+import { ClientState } from '../ClientState/ClientState.tsx';
 import tableStyles from '../../../../styles/clientListTableSizes.module.scss';
 import styles from './ClientListRow.module.scss';
-
-const stateClasses: Record<CompanyState, string> = {
-  A_POTENTIAL: styles['clientListRow__state--potential'],
-  B_ACTUAL: styles['clientListRow__state--actual'],
-  C_DEFERRED: styles['clientListRow__state--deferred'],
-  D_UNATTRACTIVE: styles['clientListRow__state--uninteresting'],
-};
 
 export interface ClientListRowProps {
   client: ClientListItem;
@@ -22,7 +16,6 @@ export interface ClientListRowProps {
 
 export function ClientListRow({ client, categories, isSelected }: Readonly<ClientListRowProps>) {
   const name = checkValue(client.name);
-  const state = getClientStateLabel(client.state);
   const role = getClientRoleLabel(client.role);
   const rating = checkValue(client.rating);
   const owner = checkValue(client.owner?.fullName);
@@ -46,7 +39,7 @@ export function ClientListRow({ client, categories, isSelected }: Readonly<Clien
       </th>
       <td className={tableStyles.clientList__state}>
         <div className={styles.clientListRow__content}>
-          <span className={stateClasses[client.state]}>{state}</span>
+          <ClientState state={client.state} />
         </div>
       </td>
       <td className={tableStyles.clientList__relation}>

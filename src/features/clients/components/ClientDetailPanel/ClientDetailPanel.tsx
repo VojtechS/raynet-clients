@@ -4,16 +4,10 @@ import { checkValue } from '../../../../shared/utils/checkValue.ts';
 import { formatAddress } from '../../utils/formatAddress.ts';
 import { Badge } from '../../../../shared/components/Badge/Badge.tsx';
 import { ClientAddress } from '../ClientAddress/ClientAddress.tsx';
-import type { CompanyCategory, CompanyState } from '../../api/companyApi.types.ts';
+import type { CompanyCategory } from '../../api/companyApi.types.ts';
 import styles from './ClientDetailPanel.module.scss';
-import { getClientRoleLabel, getClientStateLabel } from '../../constants/clientLabels.ts';
-
-const stateClasses: Record<CompanyState, string> = {
-  A_POTENTIAL: styles['clientDetailPanel__state--potential'],
-  B_ACTUAL: styles['clientDetailPanel__state--actual'],
-  C_DEFERRED: styles['clientDetailPanel__state--deferred'],
-  D_UNATTRACTIVE: styles['clientDetailPanel__state--uninteresting'],
-};
+import { getClientRoleLabel } from '../../constants/clientLabels.ts';
+import { ClientState } from '../ClientState/ClientState.tsx';
 
 export interface ClientDetailPanelProps {
   client?: ClientDetail;
@@ -26,7 +20,6 @@ export function ClientDetailPanel({ client, categories }: Readonly<ClientDetailP
   }
 
   const category = client.category?.value;
-  const state = getClientStateLabel(client.state);
   const role = getClientRoleLabel(client.role);
 
   const addressText = formatAddress(client.primaryAddress);
@@ -38,8 +31,8 @@ export function ClientDetailPanel({ client, categories }: Readonly<ClientDetailP
         <div>
           {category && <Badge color={categoryColor}>{category}</Badge>}
 
-          <strong className={stateClasses[client.state]}>
-            {checkValue(state)} {checkValue(role)}
+          <strong>
+            <ClientState state={client.state} suffix={checkValue(role)} />
           </strong>
         </div>
 
