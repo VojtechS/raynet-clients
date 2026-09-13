@@ -8,13 +8,15 @@ import type { CompanyCategory } from '../../api/companyApi.types.ts';
 import styles from './ClientDetailPanel.module.scss';
 import { getClientRoleLabel } from '../../constants/clientLabels.ts';
 import { ClientState } from '../ClientState/ClientState.tsx';
+import { X } from 'lucide-react';
 
 export interface ClientDetailPanelProps {
   client?: ClientDetail;
   categories: CompanyCategory[];
+  onClose: () => void;
 }
 
-export function ClientDetailPanel({ client, categories }: Readonly<ClientDetailPanelProps>) {
+export function ClientDetailPanel({ client, categories, onClose }: Readonly<ClientDetailPanelProps>) {
   if (!client) {
     return null;
   }
@@ -31,9 +33,19 @@ export function ClientDetailPanel({ client, categories }: Readonly<ClientDetailP
         <div className={styles.clientDetailPanel__top}>
           {category && <Badge color={categoryColor}>{category}</Badge>}
 
-          <strong>
-            <ClientState state={client.state} suffix={checkValue(role)} />
-          </strong>
+          <div className={styles.clientDetailPanel__state}>
+            <strong>
+              <ClientState state={client.state} suffix={checkValue(role)} />
+            </strong>
+            <button
+              type="button"
+              className={styles.clientDetailPanel__closeButton}
+              onClick={onClose}
+              aria-label="Zavřít detail klienta"
+            >
+              <X size={18} aria-hidden="true" />
+            </button>
+          </div>
         </div>
 
         <h2 className={styles.clientDetailPanel__title}>{checkValue(client.name)}</h2>

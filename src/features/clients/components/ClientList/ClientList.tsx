@@ -9,9 +9,15 @@ export interface ClientListProps {
   clients: ClientListItem[];
   categories: CompanyCategory[];
   selectedClientId: number | null;
+  onSelect: () => void;
 }
 
-export function ClientList({ clients, categories, selectedClientId }: Readonly<ClientListProps>) {
+export function ClientList({
+  clients,
+  categories,
+  selectedClientId,
+  onSelect,
+}: Readonly<ClientListProps>) {
   return (
     <div className={styles.clientListWrapper}>
       <table className={`${styles.clientList} ${tableSizeStyles.clientList}`}>
@@ -23,6 +29,7 @@ export function ClientList({ clients, categories, selectedClientId }: Readonly<C
               client={client}
               categories={categories}
               isSelected={client.id === selectedClientId}
+              onSelect={onSelect}
             />
           ))}
         </tbody>

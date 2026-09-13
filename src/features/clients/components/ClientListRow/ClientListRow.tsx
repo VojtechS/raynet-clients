@@ -12,9 +12,15 @@ export interface ClientListRowProps {
   client: ClientListItem;
   categories: CompanyCategory[];
   isSelected: boolean;
+  onSelect: () => void;
 }
 
-export function ClientListRow({ client, categories, isSelected }: Readonly<ClientListRowProps>) {
+export function ClientListRow({
+  client,
+  categories,
+  isSelected,
+  onSelect,
+}: Readonly<ClientListRowProps>) {
   const name = checkValue(client.name);
   const role = getClientRoleLabel(client.role);
   const rating = checkValue(client.rating);
@@ -32,6 +38,7 @@ export function ClientListRow({ client, categories, isSelected }: Readonly<Clien
             className={styles['clientListRow__link']}
             to={{ search: `?clientId=${client.id}` }}
             aria-current={isSelected ? 'page' : undefined}
+            onClick={onSelect}
           >
             {name}
           </Link>

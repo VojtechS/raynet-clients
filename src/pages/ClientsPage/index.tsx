@@ -14,10 +14,16 @@ import {
   SEARCH_DEBOUNCE_MS,
 } from '../../features/clients/constants/clientSearch.ts';
 import { parseClientId } from '../../features/clients/utils/parseClientId.ts';
+import styles from './ClientsPage.module.scss';
+
+function isClientDetailOpen(selectedClientId: number | null, closedDetailClientId: number | null) {
+  return selectedClientId !== null && closedDetailClientId !== selectedClientId;
+}
 
 export function ClientsPage() {
   const [search, setSearch] = useState('');
   const [querySearch, setQuerySearch] = useState('');
+  const [closedDetailClientId, setClosedDetailClientId] = useState<number | null>(null);
 
   const [searchParams] = useSearchParams();
   const selectedClientId = parseClientId(searchParams.get('clientId'));
@@ -39,6 +45,8 @@ export function ClientsPage() {
   const clientQuery = useClientQuery(selectedClientId ?? 0, selectedClientId !== null);
   const categoriesQuery = useClientCategoriesQuery();
   const categories = categoriesQuery.data?.data ?? [];
+
+  const isDetailOpen = isClientDetailOpen(selectedClientId, closedDetailClientId);
 
   function handleSearchChange(value: string) {
     setSearch(value);
@@ -72,12 +80,22 @@ export function ClientsPage() {
         onClear={handleSearchClear}
         onSubmit={handleSearchSubmit}
       />
-      <ClientList
-        clients={clientsQuery.data?.data ?? []}
-        categories={categories}
-        selectedClientId={selectedClientId}
-      />
-      <ClientDetailPanel client={clientQuery.data?.data} categories={categories} />
+
+      <div className={styles.clientsLayout} data-detail-open={isDetailOpen}>
+        <ClientList
+          clients={clientsQuery.data?.data ?? []}
+          categories={categories}
+          selectedClientId={selectedClientId}
+          onSelect={() => setClosedDetailClientId(null)}
+        />
+        <div className={styles.clientsLayout__detail} aria-hidden={!isDetailOpen}>
+          <ClientDetailPanel
+            client={clientQuery.data?.data}
+            categories={categories}
+            onClose={() => setClosedDetailClientId(selectedClientId)}
+          />
+        </div>
+      </div>
     </>
   );
 }
