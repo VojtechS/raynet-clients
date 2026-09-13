@@ -13,11 +13,9 @@ export function ClientAddress({
     <address className="fontStyleNormal">
       {address ? (
         <>
-          {address.street}
-          <br />
-          {address.zipCode} {address.city}
-          <br />
-          {address.country}
+          <p>{address.street}</p>
+          <p>{address.zipCode} {address.city}</p>
+          <p>{address.country}</p>
         </>
       ) : '-'}
     </address>

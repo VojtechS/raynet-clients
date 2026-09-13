@@ -16,7 +16,11 @@ export interface ClientDetailPanelProps {
   onClose: () => void;
 }
 
-export function ClientDetailPanel({ client, categories, onClose }: Readonly<ClientDetailPanelProps>) {
+export function ClientDetailPanel({
+  client,
+  categories,
+  onClose,
+}: Readonly<ClientDetailPanelProps>) {
   if (!client) {
     return null;
   }
@@ -37,24 +41,27 @@ export function ClientDetailPanel({ client, categories, onClose }: Readonly<Clie
             <strong>
               <ClientState state={client.state} suffix={checkValue(role)} />
             </strong>
-            <button
-              type="button"
-              className={styles.clientDetailPanel__closeButton}
-              onClick={onClose}
-              aria-label="Zavřít detail klienta"
-            >
-              <X size={18} aria-hidden="true" />
-            </button>
           </div>
+
+          <button
+            type="button"
+            className={styles.clientDetailPanel__closeButton}
+            onClick={onClose}
+            aria-label="Zavřít detail klienta"
+          >
+            <X size={20} aria-hidden="true" />
+          </button>
         </div>
 
         <h2 className={styles.clientDetailPanel__title}>{checkValue(client.name)}</h2>
       </header>
 
       <div className={styles.clientDetailPanel__content}>
-        <div className={styles.clientDetailPanel__logo}>
-          <ClientLogo logoId={client.logo?.id} clientName={client.name} />
-        </div>
+        {client.logo?.id && (
+          <div className={styles.clientDetailPanel__logo}>
+            <ClientLogo logoId={client.logo?.id} clientName={client.name} />
+          </div>
+        )}
 
         <div>
           <p className={styles.clientDetailPanel__text}>IČ: {checkValue(client.regNumber)}</p>

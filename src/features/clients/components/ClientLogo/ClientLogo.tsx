@@ -1,4 +1,5 @@
 import { useClientImageQuery } from '../../hooks/useClientQueries.ts';
+import styles from './ClientLogo.module.scss';
 
 interface ClientLogoProps {
   logoId?: number;
@@ -10,13 +11,17 @@ export function ClientLogo({ logoId, clientName }: Readonly<ClientLogoProps>) {
   const imageData = imageQuery.data?.imgData;
   const hasImage = Boolean(imageData);
 
+  if (!hasImage) {
+    return null;
+  }
+
   return (
-    <div>
-      {hasImage ? (
-        <img src={imageData} alt={`${clientName} logo`} />
-      ) : (
-        <span aria-hidden="true">-</span>
-      )}
-    </div>
+    <img
+      src={imageData}
+      alt={`${clientName} logo`}
+      width={128}
+      height={128}
+      className={styles.clientLogo}
+    />
   );
 }
