@@ -28,7 +28,7 @@ export function ClientDetailPanel({ client, categories }: Readonly<ClientDetailP
   return (
     <aside className={styles.clientDetailPanel} aria-label="Detail klienta">
       <header>
-        <div>
+        <div className={styles.clientDetailPanel__top}>
           {category && <Badge color={categoryColor}>{category}</Badge>}
 
           <strong>
@@ -36,18 +36,25 @@ export function ClientDetailPanel({ client, categories }: Readonly<ClientDetailP
           </strong>
         </div>
 
-        <h2>{checkValue(client.name)}</h2>
+        <h2 className={styles.clientDetailPanel__title}>{checkValue(client.name)}</h2>
       </header>
 
-      <div>
-        <ClientLogo logoId={client.logo?.id} clientName={client.name} />
+      <div className={styles.clientDetailPanel__content}>
+        <div className={styles.clientDetailPanel__logo}>
+          <ClientLogo logoId={client.logo?.id} clientName={client.name} />
+        </div>
 
         <div>
-          <p>IČ: {checkValue(client.regNumber)}</p>
-          <ClientAddress contactAddress={client.primaryAddress} />
+          <p className={styles.clientDetailPanel__text}>IČ: {checkValue(client.regNumber)}</p>
+
+          <div className={styles.clientDetailPanel__text}>
+            <ClientAddress contactAddress={client.primaryAddress} />
+          </div>
+
           {addressText !== '-' ? (
             <a
               href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(addressText)}`}
+              className="link link--blue"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Zobrazit na mapě"
@@ -58,9 +65,16 @@ export function ClientDetailPanel({ client, categories }: Readonly<ClientDetailP
         </div>
       </div>
 
-      {client.notice ? <p>{client.notice}</p> : null}
+      {client.notice && (
+        <div
+          className={styles.clientDetailPanel__text}
+          dangerouslySetInnerHTML={{ __html: client.notice }}
+        ></div>
+      )}
 
-      <p>Vlastník: {checkValue(client.owner?.fullName)}</p>
+      <p className={styles.clientDetailPanel__text}>
+        Vlastník: <strong>{checkValue(client.owner?.fullName)}</strong>
+      </p>
     </aside>
   );
 }

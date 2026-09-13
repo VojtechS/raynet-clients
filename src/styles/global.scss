@@ -17,6 +17,24 @@ body {
   margin-bottom: 17px;
 }
 
+.fontStyleNormal {
+  font-style: normal;
+}
+
+.link {
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 16px;
+
+  &--blue {
+    color: $color-blue;
+  }
+
+  &:hover {
+    text-decoration: none;
+  }
+}
+
 .labelVisuallyHidden {
   position: absolute;
 

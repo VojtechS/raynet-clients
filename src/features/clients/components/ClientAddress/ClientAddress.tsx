@@ -10,7 +10,7 @@ export function ClientAddress({
   const address = contactAddress?.address;
 
   return (
-    <address>
+    <address className="fontStyleNormal">
       {address ? (
         <>
           {address.street}
