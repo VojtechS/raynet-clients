@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title">
+  <title>Výchozí ikona společnosti</title>
+  <rect width="128" height="128" fill="#fff"/>
+  <g transform="translate(18.8 18.8) scale(.7)" fill="none" stroke="#e6e8ed" stroke-linecap="round" stroke-linejoin="round" stroke-width="4">
+    <path d="M32 108V28a8 8 0 0 1 8-8h48a8 8 0 0 1 8 8v80Z"/>
+    <path d="M32 64h-8a8 8 0 0 0-8 8v28a8 8 0 0 0 8 8h8M96 52h8a8 8 0 0 1 8 8v40a8 8 0 0 1-8 8h-8"/>
+    <path d="M52 40h24M52 58h24M52 76h24M52 94h24"/>
+  </g>
+</svg>

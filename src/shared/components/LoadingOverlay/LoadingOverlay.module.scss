@@ -12,7 +12,9 @@
   align-items: center;
   justify-content: center;
 
-  background-color: rgba($color-black-2, 0.02);
+  background-color: rgba($color-black, 0.2);
+
+  border-radius: 4px;
 }
 
 .loadingOverlay__spinner {

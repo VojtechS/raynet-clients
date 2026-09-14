@@ -24,7 +24,6 @@ export function CompanyDetailContent({
 }: Readonly<CompanyDetailContentProps>) {
   const category = company.category?.value;
   const companyName = checkValue(company.name);
-  const companyLogoId = company.logo?.id;
   const role = getCompanyRoleLabel(company.role);
   const addressText = addressUtils(company.primaryAddress);
   const categoryColor = company.category ? categoryColors.get(company.category.id) : undefined;
@@ -52,11 +51,9 @@ export function CompanyDetailContent({
       </header>
 
       <div className={styles.content}>
-        {companyLogoId && (
-          <div className={styles.logo}>
-            <CompanyLogo logoId={companyLogoId} companyName={companyName} />
-          </div>
-        )}
+        <div className={styles.logo}>
+          <CompanyLogo logoId={company.logo?.id} companyName={companyName} />
+        </div>
         <div>
           <p className={styles.text}>IČO: {checkValue(company.regNumber)}</p>
           <div className={styles.text}>
@@ -67,10 +64,7 @@ export function CompanyDetailContent({
       </div>
 
       {company.notice && (
-        <div
-          className={styles.text}
-          dangerouslySetInnerHTML={{ __html: company.notice }}
-        />
+        <div className={styles.text} dangerouslySetInnerHTML={{ __html: company.notice }} />
       )}
       <p className={styles.text}>
         Vlastník: <strong>{checkValue(company.owner?.fullName)}</strong>

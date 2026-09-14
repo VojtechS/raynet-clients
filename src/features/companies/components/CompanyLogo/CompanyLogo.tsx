@@ -1,4 +1,5 @@
 import { useCompanyImageQuery } from '../../hooks/useCompanyQueries.ts';
+import placeholderImage from '../../../../assets/img/company-placeholder.svg';
 import styles from './CompanyLogo.module.scss';
 
 interface CompanyLogoProps {
@@ -9,19 +10,14 @@ interface CompanyLogoProps {
 export function CompanyLogo({ logoId, companyName }: Readonly<CompanyLogoProps>) {
   const imageQuery = useCompanyImageQuery(logoId);
   const imageData = imageQuery.data?.imgData;
-  const hasImage = Boolean(imageData);
-
-  if (!hasImage) {
-    return null;
-  }
 
   return (
     <img
-      src={imageData}
+      src={imageData ?? placeholderImage}
       alt={`${companyName} logo`}
       width={128}
       height={128}
-      loading={'lazy'}
+      loading="eager"
       className={styles.companyLogo}
     />
   );
