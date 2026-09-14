@@ -1,65 +1,67 @@
 @use '../../../../../styles/variables' as *;
 
-.top {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.state {
-  flex: 1;
-}
-
-.closeButton {
-  display: grid;
-  place-items: center;
-
-  width: 28px;
-  height: 28px;
-  padding: 0;
-
-  color: $color-blue;
-  background: transparent;
-  border: 0;
-  border-radius: 50%;
-  cursor: pointer;
-
-  &:hover {
-    background-color: $color-main-bg;
+.CompanyDetailContent {
+  &__top {
+    display: flex;
+    align-items: center;
+    gap: 12px;
   }
 
-  &:focus-visible {
-    outline: 1px solid $color-blue;
-    outline-offset: 1px;
+  &__state {
+    flex: 1;
   }
-}
 
-.title {
-  font-size: 28px;
-  font-weight: 400;
-  line-height: normal;
-  margin-top: 5px;
-}
+  &__closeButton {
+    display: grid;
+    place-items: center;
 
-.logo {
-  box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
-  border-radius: 4px;
-}
+    width: 28px;
+    height: 28px;
+    padding: 0;
 
-.content {
-  display: flex;
-  align-items: start;
-  gap: 16px;
-  margin: 8px 0;
-}
+    color: $color-blue;
+    background: transparent;
+    border: 0;
+    border-radius: 50%;
+    cursor: pointer;
 
-.text {
-  font-size: 13px;
-  font-weight: 400;
-  line-height: 18px;
-  margin-bottom: 8px;
+    &:hover {
+      background-color: $color-main-bg;
+    }
 
-  &:last-child {
-    margin-bottom: 0;
+    &:focus-visible {
+      outline: 1px solid $color-blue;
+      outline-offset: 1px;
+    }
+  }
+
+  &__title {
+    font-size: 28px;
+    font-weight: 400;
+    line-height: normal;
+    margin-top: 5px;
+  }
+
+  &__logo {
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+  }
+
+  &__content {
+    display: flex;
+    align-items: start;
+    gap: 16px;
+    margin: 8px 0;
+  }
+
+  &__text {
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 18px;
+    margin-bottom: 8px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
   }
 }

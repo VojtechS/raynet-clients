@@ -29,34 +29,34 @@ export function CompanyDetailContent({
   const categoryColor = company.category ? categoryColors.get(company.category.id) : undefined;
 
   return (
-    <>
+    <div className={styles.CompanyDetailContent}>
       <header>
-        <div className={styles.top}>
+        <div className={styles.CompanyDetailContent__top}>
           {category && <Badge color={categoryColor}>{category}</Badge>}
-          <div className={styles.state}>
+          <div className={styles.CompanyDetailContent__state}>
             <strong>
               <CompanyState state={company.state} suffix={checkValue(role)} />
             </strong>
           </div>
           <button
             type="button"
-            className={styles.closeButton}
+            className={styles.CompanyDetailContent__closeButton}
             onClick={onClose}
             aria-label="Zavřít detail společnosti"
           >
             <X size={20} aria-hidden="true" />
           </button>
         </div>
-        <h2 className={styles.title}>{companyName}</h2>
+        <h2 className={styles.CompanyDetailContent__title}>{companyName}</h2>
       </header>
 
-      <div className={styles.content}>
-        <div className={styles.logo}>
+      <div className={styles.CompanyDetailContent__content}>
+        <div className={styles.CompanyDetailContent__logo}>
           <CompanyLogo logoId={company.logo?.id} companyName={companyName} />
         </div>
         <div>
-          <p className={styles.text}>IČO: {checkValue(company.regNumber)}</p>
-          <div className={styles.text}>
+          <p className={styles.CompanyDetailContent__text}>IČO: {checkValue(company.regNumber)}</p>
+          <div className={styles.CompanyDetailContent__text}>
             <CompanyAddress contactAddress={company.primaryAddress} />
           </div>
           <CompanyMapLink address={addressText} />
@@ -64,11 +64,14 @@ export function CompanyDetailContent({
       </div>
 
       {company.notice && (
-        <div className={styles.text} dangerouslySetInnerHTML={{ __html: company.notice }} />
+        <div
+          className={styles.CompanyDetailContent__text}
+          dangerouslySetInnerHTML={{ __html: company.notice }}
+        />
       )}
-      <p className={styles.text}>
+      <p className={styles.CompanyDetailContent__text}>
         Vlastník: <strong>{checkValue(company.owner?.fullName)}</strong>
       </p>
-    </>
+    </div>
   );
 }

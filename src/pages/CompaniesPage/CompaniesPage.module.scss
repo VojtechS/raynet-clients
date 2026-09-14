@@ -5,8 +5,9 @@
   grid-template-columns: minmax(0, 1fr) 0;
   gap: 0;
 
-  transition: grid-template-columns 220ms ease,
-  gap 220ms ease;
+  transition:
+    grid-template-columns 220ms ease,
+    gap 220ms ease;
 
   margin-top: 17px;
 
@@ -21,8 +22,9 @@
 
     opacity: 0;
     transform: translateX(16px);
-    transition: opacity 180ms ease,
-    transform 220ms ease;
+    transition:
+      opacity 180ms ease,
+      transform 220ms ease;
   }
 
   &[data-detail-open='true'] &__detail {
