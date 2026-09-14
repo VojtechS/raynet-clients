@@ -1,83 +1,83 @@
-# React + TypeScript + Vite
+# Raynet Clients
 
-## Environment setup
+A React and TypeScript web application for browsing companies from the Raynet API. The application provides a searchable company list, category badges, and a detail panel for viewing an individual company. It is built with Vite and uses TanStack Query for API data fetching and caching.
 
-Create a local environment file from the example and add your API token:
+## Requirements
+
+- Node.js and npm
+- A Raynet API URL and bearer token
+
+## Environment variables
+
+Create a local `.env` file from the provided example:
 
 ```powershell
 Copy-Item .env.example .env
 ```
 
-Then edit `.env` and replace the placeholder token. The `.env` file is ignored by Git; do not commit real tokens.
+Then update `.env` with the API configuration:
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
-
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```env
+VITE_API_URL=https://app.raynet.cz/api/v2/
+VITE_API_TOKEN=your-bearer-token
 ```
 
-You can also install [eslint-plugin-react-x](https://npmx.dev/package/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://npmx.dev/package/eslint-plugin-react-dom) for React-specific lint rules:
+`VITE_API_URL` is the base URL used for API requests. `VITE_API_TOKEN` is sent as a bearer token in the `Authorization` header. The `.env` file is ignored by Git, so keep real credentials there and do not commit them.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## Install dependencies
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```powershell
+npm install
+```
+
+## Run locally
+
+Start the Vite development server:
+
+```powershell
+npm run dev
+```
+
+Open the URL shown in the terminal, usually `http://localhost:5173`. The companies page is available at `/klienti`.
+
+## Build and preview
+
+Create a production build:
+
+```powershell
+npm run build
+```
+
+The generated files are placed in `dist/`. To serve the production build locally:
+
+```powershell
+npm run preview
+```
+
+The preview server also needs the environment variables configured when the application is built.
+
+## Tests and code quality
+
+Run the test suite once:
+
+```powershell
+npm test
+```
+
+Run tests in watch mode during development:
+
+```powershell
+npm run test:watch
+```
+
+Run ESLint:
+
+```powershell
+npm run lint
+```
+
+Format the project with Prettier:
+
+```powershell
+npm run format
 ```

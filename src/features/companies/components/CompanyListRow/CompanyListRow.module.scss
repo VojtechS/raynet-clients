@@ -1,0 +1,49 @@
+@use '../../../../styles/variables' as *;
+
+.companyListRow {
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.05);
+
+  & > th,
+  & > td {
+    background-color: $color-white;
+
+    padding: 0 10px;
+  }
+
+  &__content {
+    display: flex;
+    align-items: center;
+
+    min-height: 30px;
+
+    font-size: 13px;
+    text-align: left;
+    font-weight: 500;
+
+    color: $color-grey;
+  }
+
+  &__link {
+    color: $color-black;
+    font-weight: 600;
+
+    &:hover {
+      text-decoration: none;
+    }
+  }
+
+  &:hover > th,
+  &:hover > td,
+  &--selected > th,
+  &--selected > td {
+    background-color: $color-blue-light;
+  }
+
+  & > :first-child {
+    border-radius: 4px 0 0 4px;
+  }
+
+  & > :last-child {
+    border-radius: 0 4px 4px 0;
+  }
+}

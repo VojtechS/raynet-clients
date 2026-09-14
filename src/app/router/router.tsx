@@ -1,14 +1,14 @@
 import { createBrowserRouter, Navigate } from 'react-router-dom';
 import { Layout } from '../Layout';
-import { ClientsPage } from '../../pages/ClientsPage';
+import { CompaniesPage } from '../../pages/CompaniesPage';
 
 export const router = createBrowserRouter([
   {
     path: '/',
     element: <Layout />,
     children: [
-      { index: true, element: <Navigate to="/clients" replace /> },
-      { path: 'clients', element: <ClientsPage /> },
+      { index: true, element: <Navigate to="/klienti" replace /> },
+      { path: 'klienti', element: <CompaniesPage /> },
     ],
   },
 ]);

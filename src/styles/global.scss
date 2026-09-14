@@ -1,6 +1,6 @@
-@use "reset";
-@use "variables" as *;
-@use "libraries/sonner";
+@use 'reset';
+@use 'variables' as *;
+@use 'libraries/sonner';
 
 body {
   font-family: 'Roboto', sans-serif;
@@ -16,6 +16,16 @@ body {
   font-weight: 400;
 
   margin-bottom: 17px;
+}
+
+.emptyState {
+  margin-top: 17px;
+
+  color: $color-grey;
+  font-size: 15px;
+  font-weight: 500;
+  text-align: center;
+  text-transform: uppercase;
 }
 
 .fontStyleNormal {
@@ -36,7 +46,7 @@ body {
   }
 }
 
-.labelVisuallyHidden {
+.visuallyHidden {
   position: absolute;
 
   width: 1px;

@@ -1,0 +1,64 @@
+@use '../../../../../styles/variables' as *;
+
+.top {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.state {
+  flex: 1;
+}
+
+.closeButton {
+  display: grid;
+  place-items: center;
+
+  width: 28px;
+  height: 28px;
+  padding: 0;
+
+  color: $color-blue;
+  background: transparent;
+  border: 0;
+  border-radius: 50%;
+  cursor: pointer;
+
+  &:hover {
+    background-color: $color-main-bg;
+  }
+
+  &:focus-visible {
+    outline: 1px solid $color-blue;
+    outline-offset: 1px;
+  }
+}
+
+.title {
+  font-size: 28px;
+  font-weight: 400;
+  line-height: normal;
+  margin-top: 5px;
+}
+
+.logo {
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+}
+
+.content {
+  display: flex;
+  gap: 16px;
+  margin: 8px 0;
+}
+
+.text {
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 18px;
+  margin-bottom: 8px;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}

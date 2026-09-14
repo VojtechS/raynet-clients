@@ -1,0 +1,19 @@
+@use '../../../../styles/variables.scss' as *;
+
+.companyState {
+  &--uninteresting {
+    color: $color-danger;
+  }
+
+  &--deferred {
+    color: $color-grey;
+  }
+
+  &--potential {
+    color: $color-warning;
+  }
+
+  &--actual {
+    color: $color-success;
+  }
+}

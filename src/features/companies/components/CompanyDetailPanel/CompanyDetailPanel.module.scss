@@ -1,0 +1,21 @@
+@use '../../../../styles/variables.scss' as *;
+
+.panel {
+  position: relative;
+
+  min-width: 380px;
+  min-height: 280px;
+  height: 100%;
+
+  padding: 16px 12px;
+
+  background-color: $color-white;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.05);
+  border-radius: 4px;
+}
+
+@media (max-width: 767px) {
+  .panel {
+    min-width: 0;
+  }
+}

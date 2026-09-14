@@ -1,0 +1,20 @@
+.companyList {
+  &__wrapper {
+    position: relative;
+
+    width: 100%;
+    max-width: 100%;
+    overflow-x: auto;
+
+    min-height: 240px;
+  }
+
+  &__table {
+    border-spacing: 0 2px;
+  }
+
+  &__emptyCell {
+    padding: 0 10px;
+  }
+
+}
