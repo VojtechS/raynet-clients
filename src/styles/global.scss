@@ -60,3 +60,9 @@ body {
   white-space: nowrap;
   border: 0;
 }
+
+@media (max-width: $media-breakpoint-md) {
+  body {
+    padding: 20px 12px;
+  }
+}

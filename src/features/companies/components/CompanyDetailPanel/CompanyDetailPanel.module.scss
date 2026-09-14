@@ -14,7 +14,7 @@
   border-radius: 4px;
 }
 
-@media (max-width: 767px) {
+@media (max-width: $media-breakpoint-md) {
   .panel {
     min-width: 0;
   }
