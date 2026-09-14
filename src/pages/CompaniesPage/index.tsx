@@ -40,6 +40,8 @@ export function CompaniesPage() {
   }
 
   const isDetailOpen = selectedCompanyId !== null;
+  const isCompaniesLoading = companiesQuery.isPending || companiesQuery.isFetching;
+  const isCompanyLoading = companyQuery.isPending || companyQuery.isFetching;
 
   return (
     <>
@@ -56,7 +58,7 @@ export function CompaniesPage() {
           companies={companiesQuery.data?.data ?? []}
           categoryColors={categoryColors}
           selectedCompanyId={selectedCompanyId}
-          isLoading={companiesQuery.isFetching}
+          isLoading={isCompaniesLoading}
         />
         <div className={styles.companiesLayout__detail} aria-hidden={!isDetailOpen}>
           <CompanyDetailPanel
@@ -64,7 +66,7 @@ export function CompaniesPage() {
             categoryColors={categoryColors}
             onClose={closeDetail}
             isOpen={isDetailOpen}
-            isLoading={companyQuery.isFetching}
+            isLoading={isCompanyLoading}
           />
         </div>
       </div>

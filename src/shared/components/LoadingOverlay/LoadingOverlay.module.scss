@@ -12,16 +12,16 @@
   align-items: center;
   justify-content: center;
 
-  background-color: rgba($color-white, 0.72);
+  background-color: rgba($color-black-2, 0.02);
 }
 
 .loadingOverlay__spinner {
-  width: 30px;
-  height: 30px;
+  width: 26px;
+  height: 26px;
 
   color: $color-blue;
 
-  animation: loadingOverlay-spin 700ms linear infinite;
+  animation: loadingOverlay-spin 1200ms linear infinite;
 }
 
 @keyframes loadingOverlay-spin {

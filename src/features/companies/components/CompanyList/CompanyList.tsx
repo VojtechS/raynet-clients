@@ -26,7 +26,7 @@ export function CompanyList({
         <caption className="visuallyHidden">Seznam klientů</caption>
         <CompanyListHeader />
         <tbody>
-          {companies.length === 0 ? (
+          {companies.length === 0 && !isLoading ? (
             <tr>
               <td className={styles.companyList__emptyCell} colSpan={8}>
                 <div className="emptyState">Žádní klienti</div>
