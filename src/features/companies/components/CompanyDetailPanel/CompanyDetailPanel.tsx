@@ -30,7 +30,7 @@ export function CompanyDetailPanel({
       <CompanyDetailContent company={company} categoryColors={categoryColors} onClose={onClose} />
     );
   } else if (!isLoading) {
-    content = <div className="emptyState">Žádné údaje o společnosti</div>;
+    content = <p className="emptyState">Žádné údaje o společnosti</p>;
   }
 
   return (

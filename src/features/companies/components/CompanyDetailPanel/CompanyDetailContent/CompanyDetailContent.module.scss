@@ -1,6 +1,8 @@
 @use '../../../../../styles/variables' as *;
 
 .CompanyDetailContent {
+  container-type: inline-size;
+
   &__top {
     display: flex;
     align-items: center;
@@ -39,6 +41,7 @@
     font-size: 28px;
     font-weight: 400;
     line-height: normal;
+
     margin-top: 5px;
   }
 
@@ -51,17 +54,32 @@
     display: flex;
     align-items: start;
     gap: 16px;
-    margin: 8px 0;
+
+    margin: 16px 0;
   }
 
   &__text {
     font-size: 13px;
     font-weight: 400;
     line-height: 18px;
+
     margin-bottom: 8px;
 
     &:last-child {
       margin-bottom: 0;
+    }
+  }
+}
+
+@container (max-width: 300px) {
+  .CompanyDetailContent {
+    &__content {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    &__info {
+      text-align: center;
     }
   }
 }

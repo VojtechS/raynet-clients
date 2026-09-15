@@ -1,4 +1,4 @@
-import { useCompanyImageQuery } from '../../hooks/useCompanyQueries.ts';
+import { useFileImageQuery } from '../../../../shared/hooks/useFileImageQuery.ts';
 import placeholderImage from '../../../../assets/img/company-placeholder.svg';
 import styles from './CompanyLogo.module.scss';
 
@@ -8,7 +8,7 @@ interface CompanyLogoProps {
 }
 
 export function CompanyLogo({ logoId, companyName }: Readonly<CompanyLogoProps>) {
-  const imageQuery = useCompanyImageQuery(logoId);
+  const imageQuery = useFileImageQuery(logoId);
   const imageData = imageQuery.data?.imgData;
 
   return (

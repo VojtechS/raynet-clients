@@ -23,6 +23,7 @@ export function useCompanySearch() {
 
   function handleSearchSubmit(value: string) {
     debouncedSetQuery.cancel();
+
     const trimmed = value.trim();
 
     if (trimmed.length > 0 && trimmed.length < MIN_SEARCH_LENGTH) {

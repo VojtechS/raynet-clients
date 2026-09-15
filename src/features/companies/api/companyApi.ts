@@ -1,7 +1,6 @@
 import { api } from '../../../services/api/axios.ts';
 import type {
   CompanyCategoryResponse,
-  CompanyImageResponse,
   CompanyDetailResponse,
   CompanyListParams,
   CompanyListResponse,
@@ -20,11 +19,6 @@ export const companyApi = {
 
   getById: async (id: number): Promise<CompanyDetailResponse> => {
     const response = await api.get<CompanyDetailResponse>(`/company/${id}/`);
-    return response.data;
-  },
-
-  getImage: async (fileId: number): Promise<CompanyImageResponse> => {
-    const response = await api.get<CompanyImageResponse>(`/image/${fileId}/`);
     return response.data;
   },
 };

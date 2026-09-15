@@ -16,6 +16,7 @@ import styles from './CompaniesPage.module.scss';
 export function CompaniesPage() {
   const [searchParams, setSearchParams] = useSearchParams();
   const selectedCompanyId = parseCompanyId(searchParams.get('companyId'));
+
   const { search, querySearch, handleSearchChange, handleSearchSubmit, handleSearchClear } =
     useCompanySearch();
 
@@ -26,6 +27,7 @@ export function CompaniesPage() {
   });
   const companyQuery = useCompanyQuery(selectedCompanyId ?? 0, selectedCompanyId !== null);
   const categoriesQuery = useCompanyCategoriesQuery();
+
   const categoryColors = useMemo(
     () => createCategoryColorMap(categoriesQuery.data?.data ?? []),
     [categoriesQuery.data?.data],
@@ -46,6 +48,7 @@ export function CompaniesPage() {
   return (
     <>
       <h1 className="pageTitle">Klienti</h1>
+
       <CompanySearchBar
         value={search}
         onChange={handleSearchChange}
@@ -60,6 +63,7 @@ export function CompaniesPage() {
           selectedCompanyId={selectedCompanyId}
           isLoading={isCompaniesLoading}
         />
+
         <div className={styles.companiesLayout__detail} aria-hidden={!isDetailOpen}>
           <CompanyDetailPanel
             company={companyQuery.data?.data}

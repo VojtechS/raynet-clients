@@ -7,19 +7,17 @@ export interface CompanyAddressProps {
 export function CompanyAddress({ contactAddress }: Readonly<CompanyAddressProps>) {
   const address = contactAddress?.address;
 
+  if (!address) {
+    return null;
+  }
+
   return (
     <address className="fontStyleNormal">
-      {address ? (
-        <>
-          <p>{address.street}</p>
-          <p>
-            {address.zipCode} {address.city}
-          </p>
-          <p>{address.country}</p>
-        </>
-      ) : (
-        '-'
-      )}
+      <p>{address.street}</p>
+      <p>
+        {address.zipCode} {address.city}
+      </p>
+      <p>{address.country}</p>
     </address>
   );
 }

@@ -10,6 +10,21 @@
     padding: 0 10px;
   }
 
+  &:hover > th,
+  &:hover > td,
+  &--selected > th,
+  &--selected > td {
+    background-color: $color-blue-light;
+  }
+
+  & > :first-child {
+    border-radius: 4px 0 0 4px;
+  }
+
+  & > :last-child {
+    border-radius: 0 4px 4px 0;
+  }
+
   &__content {
     display: flex;
     align-items: center;
@@ -30,20 +45,5 @@
     &:hover {
       text-decoration: none;
     }
-  }
-
-  &:hover > th,
-  &:hover > td,
-  &--selected > th,
-  &--selected > td {
-    background-color: $color-blue-light;
-  }
-
-  & > :first-child {
-    border-radius: 4px 0 0 4px;
-  }
-
-  & > :last-child {
-    border-radius: 0 4px 4px 0;
   }
 }

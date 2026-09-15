@@ -62,12 +62,6 @@ export interface CompanyDetailResponse {
   data: CompanyDetail;
 }
 
-export interface CompanyImageResponse {
-  fileName: string;
-  contentType: string;
-  imgData: string;
-}
-
 export interface CompanyListItem {
   id: number;
   name: string;

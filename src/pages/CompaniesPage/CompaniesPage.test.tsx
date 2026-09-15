@@ -10,6 +10,11 @@ vi.mock('../../features/companies/api/companyApi.ts', () => ({
     getCategories: vi.fn(),
     getAll: vi.fn(),
     getById: vi.fn(),
+  },
+}));
+
+vi.mock('../../shared/api/fileApi.ts', () => ({
+  fileApi: {
     getImage: vi.fn(),
   },
 }));

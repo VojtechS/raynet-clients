@@ -5,6 +5,7 @@ import type {
   CompanyListResponse,
 } from '../../features/companies/api/companyApi.types.ts';
 import { companyApi } from '../../features/companies/api/companyApi.ts';
+import { fileApi } from '../../shared/api/fileApi.ts';
 
 const companies = [
   ['Company 1', 'Prague'],
@@ -71,7 +72,7 @@ export function setupApiMocks() {
     });
   });
 
-  vi.mocked(companyApi.getImage).mockResolvedValue({
+  vi.mocked(fileApi.getImage).mockResolvedValue({
     fileName: '',
     contentType: 'image/png',
     imgData: '',

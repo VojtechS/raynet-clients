@@ -15,15 +15,15 @@
   background-color: rgba($color-black, 0.2);
 
   border-radius: 4px;
-}
 
-.loadingOverlay__spinner {
-  width: 26px;
-  height: 26px;
+  &__spinner {
+    width: 26px;
+    height: 26px;
 
-  color: $color-blue;
+    color: $color-blue;
 
-  animation: loadingOverlay-spin 1200ms linear infinite;
+    animation: loadingOverlay-spin 1200ms linear infinite;
+  }
 }
 
 @keyframes loadingOverlay-spin {

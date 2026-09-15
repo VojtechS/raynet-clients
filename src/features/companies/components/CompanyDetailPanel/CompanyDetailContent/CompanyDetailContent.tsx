@@ -23,21 +23,28 @@ export function CompanyDetailContent({
   onClose,
 }: Readonly<CompanyDetailContentProps>) {
   const category = company.category?.value;
-  const companyName = checkValue(company.name);
-  const role = getCompanyRoleLabel(company.role);
-  const addressText = addressUtils(company.primaryAddress);
   const categoryColor = company.category ? categoryColors.get(company.category.id) : undefined;
+  const companyLogoId = company.logo?.id;
+  const companyName = checkValue(company.name);
+  const companyState = company.state;
+  const notice = company.notice;
+  const ownerFullName = checkValue(company.owner?.fullName);
+  const primaryAddress = company.primaryAddress;
+  const regNumber = checkValue(company.regNumber);
+  const role = getCompanyRoleLabel(company.role);
 
   return (
     <div className={styles.CompanyDetailContent}>
       <header>
         <div className={styles.CompanyDetailContent__top}>
           {category && <Badge color={categoryColor}>{category}</Badge>}
+
           <div className={styles.CompanyDetailContent__state}>
             <strong>
-              <CompanyState state={company.state} suffix={checkValue(role)} />
+              <CompanyState state={companyState} suffix={checkValue(role)} />
             </strong>
           </div>
+
           <button
             type="button"
             className={styles.CompanyDetailContent__closeButton}
@@ -47,30 +54,35 @@ export function CompanyDetailContent({
             <X size={20} aria-hidden="true" />
           </button>
         </div>
+
         <h2 className={styles.CompanyDetailContent__title}>{companyName}</h2>
       </header>
 
       <div className={styles.CompanyDetailContent__content}>
         <div className={styles.CompanyDetailContent__logo}>
-          <CompanyLogo logoId={company.logo?.id} companyName={companyName} />
+          <CompanyLogo logoId={companyLogoId} companyName={companyName} />
         </div>
-        <div>
-          <p className={styles.CompanyDetailContent__text}>IČO: {checkValue(company.regNumber)}</p>
+
+        <div className={styles.CompanyDetailContent__info}>
+          <p className={styles.CompanyDetailContent__text}>IČ: {regNumber}</p>
+
           <div className={styles.CompanyDetailContent__text}>
-            <CompanyAddress contactAddress={company.primaryAddress} />
+            <CompanyAddress contactAddress={primaryAddress} />
           </div>
-          <CompanyMapLink address={addressText} />
+
+          <CompanyMapLink address={addressUtils(primaryAddress)} />
         </div>
       </div>
 
-      {company.notice && (
+      {notice && (
         <div
           className={styles.CompanyDetailContent__text}
-          dangerouslySetInnerHTML={{ __html: company.notice }}
+          dangerouslySetInnerHTML={{ __html: notice }}
         />
       )}
+
       <p className={styles.CompanyDetailContent__text}>
-        Vlastník: <strong>{checkValue(company.owner?.fullName)}</strong>
+        Vlastník: <strong>{ownerFullName}</strong>
       </p>
     </div>
   );

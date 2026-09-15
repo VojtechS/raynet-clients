@@ -43,26 +43,33 @@ export function CompanyListRow({
           </Link>
         </div>
       </th>
+
       <td className={tableStyles.companyList__state}>
         <div className={styles.companyListRow__content}>
           <CompanyState state={company.state} />
         </div>
       </td>
+
       <td className={tableStyles.companyList__relation}>
         <div className={styles.companyListRow__content}>{role}</div>
       </td>
+
       <td className={tableStyles.companyList__rating}>
         <div className={styles.companyListRow__content}>{rating}</div>
       </td>
+
       <td className={tableStyles.companyList__owner}>
         <div className={styles.companyListRow__content}>{owner}</div>
       </td>
+
       <td className={tableStyles.companyList__regNumber}>
         <div className={styles.companyListRow__content}>{regNumber}</div>
       </td>
+
       <td className={tableStyles.companyList__city}>
         <div className={styles.companyListRow__content}>{city}</div>
       </td>
+
       <td className={tableStyles.companyList__category}>
         <div className={styles.companyListRow__content}>
           <Badge color={categoryColor}>{category}</Badge>

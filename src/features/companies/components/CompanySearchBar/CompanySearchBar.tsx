@@ -47,9 +47,11 @@ export function CompanySearchBar({
   function handleClear() {
     if (onClear) {
       onClear();
-    } else {
-      onChange('');
+      return;
     }
+
+    onChange('');
+
     inputRef.current?.focus();
   }
 
@@ -89,7 +91,7 @@ export function CompanySearchBar({
             aria-label={clearLabel}
             onClick={handleClear}
           >
-            <X aria-hidden="true" size={14} strokeWidth={3} />
+            <X size={14} strokeWidth={3} aria-hidden="true" />
           </button>
         )}
 
