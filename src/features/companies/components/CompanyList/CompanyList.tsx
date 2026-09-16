@@ -20,33 +20,35 @@ export function CompanyList({
   isLoading = false,
 }: Readonly<CompanyListProps>) {
   return (
-    <div className={styles.companyList__wrapper} aria-busy={isLoading}>
-      {isLoading && <LoadingOverlay label="Načítání seznamu klientů" />}
+    <div>
+      <div className={styles.companyList__wrapper} aria-busy={isLoading}>
+        {isLoading && <LoadingOverlay label="Načítání seznamu klientů" />}
 
-      <table className={`${styles.companyList__table} ${tableSizeStyles.companyList}`}>
-        <caption className="visuallyHidden">Seznam klientů</caption>
+        <table className={`${styles.companyList__table} ${tableSizeStyles.companyList}`}>
+          <caption className="visuallyHidden">Seznam klientů</caption>
 
-        <CompanyListHeader />
+          <CompanyListHeader />
 
-        <tbody>
-          {companies.length === 0 && !isLoading ? (
-            <tr>
-              <td className={styles.companyList__emptyCell} colSpan={8}>
-                <p className="emptyState">Žádní klienti</p>
-              </td>
-            </tr>
-          ) : (
-            companies.map((company) => (
-              <CompanyListRow
-                key={company.id}
-                company={company}
-                categoryColors={categoryColors}
-                isSelected={company.id === selectedCompanyId}
-              />
-            ))
-          )}
-        </tbody>
-      </table>
+          <tbody>
+            {companies.length === 0 && !isLoading ? (
+              <tr>
+                <td className={styles.companyList__emptyCell} colSpan={8}>
+                  <p className="emptyState">Žádní klienti</p>
+                </td>
+              </tr>
+            ) : (
+              companies.map((company) => (
+                <CompanyListRow
+                  key={company.id}
+                  company={company}
+                  categoryColors={categoryColors}
+                  isSelected={company.id === selectedCompanyId}
+                />
+              ))
+            )}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 }

@@ -1,4 +1,4 @@
-import { useQuery } from '@tanstack/react-query';
+import { keepPreviousData, useQuery } from '@tanstack/react-query';
 import { companyApi } from '../api/companyApi.ts';
 import type { CompanyListParams } from '../api/companyApi.types.ts';
 import { useDataToast } from '../../../shared/hooks/useDataToast.ts';
@@ -22,6 +22,7 @@ export function useCompaniesQuery(params?: CompanyListParams) {
   const query = useQuery({
     queryKey: [...COMPANIES_QUERY_KEY, params],
     queryFn: () => companyApi.getAll(params),
+    placeholderData: keepPreviousData,
   });
 
   useDataToast(query.isError, 'Nepodařil se načíst seznam společností.');
